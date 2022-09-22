@@ -55,3 +55,27 @@ class Deck {
     return this.cards.pop(); // draw from top of deck
   }
 }
+
+class GameOfWar {
+  constructor() {
+    this.playerOne = [];
+    this.playerTwo = [];
+    this.pile = [];
+    // this.score = []
+    this.gameSetup();
+  }
+  gameSetup() {
+    const deck = new Deck();
+    let cards = deck.cards;
+    this.playerOne.push(...cards.slice(0, cards.length / 2));
+    this.playerTwo.push(...cards.slice(0, cards.length / 2));
+  }
+  playerOneDraw() {
+    return this.playerOne.pop();
+  }
+  playerTwoDraw() {
+    return this.playerTwo.pop();
+  }
+}
+
+const newGame = new GameOfWar();
