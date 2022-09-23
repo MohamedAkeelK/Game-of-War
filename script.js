@@ -58,24 +58,87 @@ class Deck {
 
 class GameOfWar {
   constructor() {
-    this.playerOne = [];
-    this.playerTwo = [];
-    this.pile = [];
-    // this.score = []
+    this.playerOneDeck = [];
+    this.playerTwoDeck = [];
+    this.cardsInPlay = {
+      current_p1: [],
+      current_p2: [],
+    };
+    this.discard = {
+      discard_p1: [],
+      discard_p2: [],
+    };
     this.gameSetup();
   }
   gameSetup() {
     const deck = new Deck();
     let cards = deck.cards;
-    this.playerOne.push(...cards.slice(0, cards.length / 2));
-    this.playerTwo.push(...cards.slice(0, cards.length / 2));
+    this.playerOneDeck.push(...cards.slice(0, cards.length / 2));
+    this.playerTwoDeck.push(...cards.slice(cards.length / 2));
   }
-  playerOneDraw() {
-    return this.playerOne.pop();
+  playerOneDeckDraw() {
+    this.cardsInPlay.current_p1.push(this.playerOneDeck.pop());
+    return;
   }
-  playerTwoDraw() {
-    return this.playerTwo.pop();
+  playerTwoDeckDraw() {
+    this.cardsInPlay.current_p2.push(this.playerTwoDeck.pop());
+    return;
+  }
+  checkWinner() {
+    if (
+      this.cardsInPlay.current_p1[0].score >
+      this.cardsInPlay.current_p2[0].score
+    ) {
+      let card1 = this.cardsInPlay.current_p1[0];
+      let card2 = this.cardsInPlay.current_p2[0];
+      this.discard.discard_p1.push(card1, card2);
+      this.cardsInPlay.current_p1 = [];
+      this.cardsInPlay.current_p2 = [];
+      console.log("player 1 wins");
+    } else {
+      let card1 = this.cardsInPlay.current_p1[0];
+      let card2 = this.cardsInPlay.current_p2[0];
+      this.discard.discard_p2.push(card1, card2);
+      this.cardsInPlay.current_p1 = [];
+      this.cardsInPlay.current_p2 = [];
+      console.log("player 2 wins");
+    }
   }
 }
 
 const newGame = new GameOfWar();
+
+// console.log(newGame);
+
+console.log("/n ------------------ CYCLE 1 ------------------------ /n");
+
+console.log("p1-draw-card", newGame.playerOneDeckDraw());
+console.log("p2-draw-card", newGame.playerTwoDeckDraw());
+console.log("cards in playyyyyyy ", newGame.cardsInPlay);
+
+console.log("CHECKING WINNER: ", newGame.checkWinner());
+console.log("DISCARD : ", newGame.discard);
+
+console.log("cards in playyyyyyy ", newGame.cardsInPlay);
+
+console.log("/n ------------------ CYCLE 2 ------------------------ /n");
+
+console.log("p1-draw-card", newGame.playerOneDeckDraw());
+console.log("p2-draw-card", newGame.playerTwoDeckDraw());
+console.log("cards in playyyyyyy ", newGame.cardsInPlay);
+console.log("CHECKING WINNER: ", newGame.checkWinner());
+console.log("DISCARD : ", newGame.discard);
+
+// console.log("p1-draw-card", newGame.playerOneDeckDraw());
+// console.log("p2-draw-card", newGame.playerTwoDeckDraw());
+// console.log("p1-draw-card", newGame.playerOneDeckDraw());
+// console.log("p2-draw-card", newGame.playerTwoDeckDraw());
+// console.log("p1-draw-card", newGame.playerOneDeckDraw());
+// console.log("p2-draw-card", newGame.playerTwoDeckDraw());
+// console.log("cardsInPlayEEEEE : ", newGame.cardsInPlay);
+// console.log("CHECKING WINNER: ", newGame.checkWinner());
+// console.log("p1-draw-card", newGame.playerOneDeckDraw());
+// console.log("p2-draw-card", newGame.playerTwoDeckDraw());
+// console.log("CHECKING WINNER: ", newGame.checkWinner());
+
+// console.log("DISCARD : ", newGame.discard);
