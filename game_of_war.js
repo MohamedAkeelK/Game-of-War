@@ -1,3 +1,4 @@
+// GAME OF WAR CLASS
 class GameOfWar {
   constructor() {
     this.deck = new Deck();
@@ -44,6 +45,7 @@ class GameOfWar {
   }
 }
 
+// PLAYER CLASS
 class Player {
   constructor() {
     this.cards = [];
@@ -54,6 +56,7 @@ class Player {
   }
 }
 
+// DECK CLASS
 class Deck {
   constructor() {
     this.cards = [];
@@ -96,6 +99,7 @@ class Deck {
   }
 }
 
+// CARD CLASS
 class Card {
   constructor(suit, rank, score) {
     this.suit = suit;
@@ -104,5 +108,6 @@ class Card {
   }
 }
 
+// NEW GAME
 let game = new GameOfWar();
 game.runGame();
