@@ -3,10 +3,10 @@ class GameOfWar {
     this.deck = new Deck();
     this.player1 = new Player();
     this.player2 = new Player();
+    this.isWinner = false;
     this.splitDeck();
   }
   splitDeck() {
-    // let cards = this.cards;
     this.player1.cards.push(
       ...this.deck.cards.slice(0, this.deck.cards.length / 2)
     );
@@ -15,11 +15,42 @@ class GameOfWar {
     );
     return this;
   }
+  runGame() {
+    let i = 1;
+    while (
+      this.player1.cards.length != 0 &&
+      this.player2.cards.length != 0 &&
+      !this.isWinner
+    ) {
+      console.log(i);
+      i++;
+      this.player1.draw();
+      this.player2.draw();
+      this.checkWinner();
+    }
+  }
+  checkWinner() {
+    let p1_lastCard =
+      this.player1.field_cards[this.player1.field_cards.length - 1];
+    let p2_lastCard =
+      this.player2.field_cards[this.player2.field_cards.length - 1];
+    if (p1_lastCard.score > p2_lastCard.score) {
+      console.log("p1 wins");
+    } else if (p2_lastCard.score > p1_lastCard.score) {
+      console.log("p2 wins");
+    } else {
+      console.log("CARDS ARE EVEN");
+    }
+  }
 }
 
 class Player {
   constructor() {
     this.cards = [];
+    this.field_cards = [];
+  }
+  draw() {
+    return this.field_cards.push(this.cards.pop()); // draw from top of deck
   }
 }
 
@@ -74,11 +105,4 @@ class Card {
 }
 
 let game = new GameOfWar();
-console.log(game.deck);
-console.log(game.player1);
-console.log(game.player2);
-
-// let mydeck = new Deck();
-
-// console.log(mydeck.createDeck());
-// console.log(mydeck.createDeck());
+game.runGame();
