@@ -45,12 +45,6 @@ class GameOfWar {
   handleWinner() {
     let p1_feild = this.player1.field_cards;
     let p2_feild = this.player2.field_cards;
-    // if (p1_feild[p1_feild.length - 1] === undefined) {
-    //   return "player one loses ran out of cards";
-    // }
-    // if (p2_feild[p2_feild.length - 1] === undefined) {
-    //   return "player two loses ran out of cards";
-    // }
     if (
       p1_feild[p1_feild.length - 1].score > p2_feild[p2_feild.length - 1].score
     ) {
@@ -71,9 +65,6 @@ class GameOfWar {
   }
 
   move_field_cards_to_winner(winner, loser) {
-    // console.log("winning card: ", winner.field_cards);
-    // console.log("loser cards: ", loser.field_cards);
-    // console.log("moving feild cards to winners cards.");
     for (let i = 0; i < winner.field_cards.length; i++) {
       winner.cards.unshift(winner.field_cards[i]);
     }
