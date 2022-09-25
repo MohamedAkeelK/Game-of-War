@@ -15,25 +15,34 @@ If there is a tie, then it's War! Each player adds three cards of their stack fa
 ### my game setup
 
 Card class
-` class Card { constructor(suit, rank, score) { this.suit = suit; this.rank = rank; this.score = score; } }`
+
+```js
+class Card {
+  constructor(suit, rank, score) {
+    this.suit = suit;
+    this.rank = rank;
+    this.score = score;
+  }
+}
+```
 
 Player class
 
-```
+```js
 class Player {
-constructor() {
-this.cards = [];
-this.field_cards = [];
-}
-draw() {
-return this.field_cards.push(this.cards.pop());
-}
+  constructor() {
+    this.cards = [];
+    this.field_cards = [];
+  }
+  draw() {
+    return this.field_cards.push(this.cards.pop());
+  }
 }
 ```
 
 Deck class
 
-```
+```js
 class Deck {
 constructor() {
 this.cards = [];
