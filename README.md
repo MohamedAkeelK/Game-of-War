@@ -19,6 +19,13 @@ If there is a tie, then it's War! Each player adds three cards of their stack fa
 - looping through game.
 - creating logic for go_to_war function.
 
+### What I learned
+
+- Work on small parts of code at a time! Writing a bunch of code without making sure the simple things are working is a big mistake and can cost you a lot of time debugging. Move one step at a time!
+- console.log() is my best friend.
+- When stuck, try to create a visual representaion, such a as diagram. Breaking things down in a bigger project is important.
+- Plan your code out before starting!
+
 ### my game setup
 
 Card class
