@@ -12,6 +12,13 @@ Players take turns playing the top card from their stacks. Whoever's card is a h
 
 If there is a tie, then it's War! Each player adds three cards of their stack face down. Each player reveals their fourth card. Whoever wins that reveal takes all of the cards! If there is another tie the process repeats until there is a winner.
 
+### problems faced during this project
+
+- Working with multiple classes.
+- Manipulating arrays and changing actual values in memory.
+- looping through game.
+- creating logic for go_to_war function.
+
 ### my game setup
 
 Card class
