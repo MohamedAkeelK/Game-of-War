@@ -4,9 +4,6 @@ class GameOfWar {
     this.deck = new Deck();
     this.player1 = new Player();
     this.player2 = new Player();
-    this.isWinner = false;
-    this.winner = "";
-    this.round = 0;
     this.splitDeck();
   }
   runGame() {
@@ -19,7 +16,7 @@ class GameOfWar {
       this.player2.cards.length !== 0
     ) {
       if (this.player1.cards.length === 0) {
-        return "PLAYER 1 loses THE GAME OF WAR!!!!!";
+        return "PLAYER 2 WINS THE GAME OF WAR!!!!!";
       }
 
       if (this.player2.cards.length === 0) {
