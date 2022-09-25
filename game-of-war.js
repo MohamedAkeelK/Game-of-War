@@ -1,3 +1,4 @@
+// GAME OF WAR CLASS
 class GameOfWar {
   constructor() {
     this.deck = new Deck();
@@ -10,74 +11,69 @@ class GameOfWar {
   }
   runGame() {
     let i = 0;
-    while (this.player1.cards != 52 || this.player2 != 52) {
-      if (this.player1.cards.length === 52) {
-        console.log("PLAYER 1 WINS !!!! PLAYER 2 SUCKS! HAHAHAHAHA");
-        return "PLAYER 1 WINSSSSS";
+
+    while (
+      this.player1.cards.length <= 52 ||
+      this.player2.cards.length <= 52 ||
+      this.player1.cards.length !== 0 ||
+      this.player2.cards.length !== 0
+    ) {
+      if (this.player1.cards.length === 0) {
+        return "PLAYER 1 loses THE GAME OF WAR!!!!!";
       }
 
-      if (this.player2.cards.length === 52) {
-        console.log("PLAYER 2 WINS !!!! PLAYER 1 SUCKS! HAHAHAHAHA");
-        return "PLAYER 2 WINSSSSS";
+      if (this.player2.cards.length === 0) {
+        return "PLAYER 1 WINS THE GAME OF WAR!!!!!";
       }
+
       i++;
       console.log("----------- round " + i + " -------------------");
 
-      // if (this.player1.cards.length === ) {
-      //   return "Player Two wins!!!! !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
-      // }
-
-      // if (this.player2.cards.length === 0) {
-      //   return "Player One wins!!!!";
-      // }
       this.player1.draw();
       this.player2.draw();
-      console.log(
-        " P1 FIELD CARDS : ",
-        this.player1.field_cards,
-        "p1fl: " + this.player1.field_cards.length,
-        "p1cl: " + this.player1.cards.length
-      );
-      console.log(
-        " P2 FIELD CARDS : ",
-        this.player2.field_cards,
-        "p2fl: " + this.player2.field_cards.length,
-        "p2cl: " + this.player2.cards.length
-      );
-
+      console.log(" P1 PLAYED : ", this.player1.field_cards);
+      console.log(" ");
+      console.log(" P2 PLAYED : ", this.player2.field_cards);
+      console.log(" ");
+      console.log("P1 DECK LENGTH: : " + this.player1.cards.length);
+      console.log(" ");
+      console.log("P2 DECK LENGTH: : " + this.player2.cards.length);
+      console.log(" ");
       this.handleWinner();
-
-      console.log(" P1 FIELD CARDS : ", this.player1.field_cards);
-      console.log(" P2 FIELD CARDS : ", this.player2.field_cards);
-      console.log("p1cl: ", this.player1.cards.length);
-      console.log("p2cl: ", this.player2.cards.length);
     }
   }
   handleWinner() {
     let p1_feild = this.player1.field_cards;
     let p2_feild = this.player2.field_cards;
+    // if (p1_feild[p1_feild.length - 1] === undefined) {
+    //   return "player one loses ran out of cards";
+    // }
+    // if (p2_feild[p2_feild.length - 1] === undefined) {
+    //   return "player two loses ran out of cards";
+    // }
     if (
       p1_feild[p1_feild.length - 1].score > p2_feild[p2_feild.length - 1].score
     ) {
-      console.log(" P1 WINS");
+      console.log(" P1 WINS THIS ROUND!");
+      console.log(" ");
       this.move_field_cards_to_winner(this.player1, this.player2);
     } else if (
       p2_feild[p2_feild.length - 1].score > p1_feild[p1_feild.length - 1].score
     ) {
-      console.log(" P2 WINS");
+      console.log(" P2 WINS WINS THIS ROUND!");
+      console.log(" ");
       this.move_field_cards_to_winner(this.player2, this.player1);
     } else {
-      console.log("EVEn ---^^^^^^^^^^^^^^^^^Y%$Y%^$%^$%^^^^^^^^^^^^");
-
-      this.gotowar();
+      console.log(" @@@@@@@@@@@@ LETS GO TO WARRRRRRRR ! @@@@@@@@@@@@@@@@@@@");
+      console.log(" ");
+      console.log(this.gotowar());
     }
   }
 
   move_field_cards_to_winner(winner, loser) {
-    console.log("winning card: ", winner.field_cards);
-    console.log("loser cards: ", loser.field_cards);
-
-    console.log("moving feild cards to winners cards.");
+    // console.log("winning card: ", winner.field_cards);
+    // console.log("loser cards: ", loser.field_cards);
+    // console.log("moving feild cards to winners cards.");
     for (let i = 0; i < winner.field_cards.length; i++) {
       winner.cards.unshift(winner.field_cards[i]);
     }
@@ -89,22 +85,24 @@ class GameOfWar {
     loser.field_cards = [];
   }
   gotowar() {
-    console.log(" LETS GO TO WARRRRRRRR !@$@#$@$%#$%%^@$%^@#$^$%^@$%@#$");
-    // this.player1.draw();
-    // this.player2.draw();
-    this.player1.draw();
-    this.player2.draw();
-    this.player1.draw();
-    this.player2.draw();
-    this.handleWinner();
+    if (this.player1.cards.length < 3) {
+      console.log("player 1 loses ran out of cards");
+      return "player 1 loses ran out of cards";
+    }
+    if (this.player2.cards.length < 3) {
+      console.log("player 2 loses ran out of cards");
+      return "player 2 loses ran out of cards";
+    }
 
-    // this.player1.draw();
-    // this.player1.draw();
-    // this.player1.draw();
-    // this.player2.draw();
-    // this.player2.draw();
-    // this.player2.draw();
-    // this.handleWinner();
+    this.player1.draw();
+    this.player2.draw();
+    this.player1.draw();
+    this.player2.draw();
+    this.player1.draw();
+    this.player2.draw();
+    console.log(" ------ p1 war cards: ", this.player1.field_cards);
+    console.log(" ------ p2 war cards: ", this.player2.field_cards);
+    this.handleWinner();
   }
   splitDeck() {
     this.player1.cards.push(
@@ -124,7 +122,7 @@ class Player {
     this.field_cards = [];
   }
   draw() {
-    return this.field_cards.push(this.cards.pop()); // draw from top of deck
+    return this.field_cards.push(this.cards.pop());
   }
 }
 
@@ -182,4 +180,4 @@ class Card {
 
 // NEW GAME
 let game = new GameOfWar();
-game.runGame();
+console.log(game.runGame());
