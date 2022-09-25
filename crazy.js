@@ -4,14 +4,32 @@ class GameOfWar {
     this.player1 = new Player();
     this.player2 = new Player();
     this.isWinner = false;
+    this.winner = "";
     this.round = 0;
     this.splitDeck();
   }
   runGame() {
     let i = 0;
     while (this.player1.cards != 52 || this.player2 != 52) {
+      if (this.player1.cards.length === 52) {
+        console.log("PLAYER 1 WINS !!!! PLAYER 2 SUCKS! HAHAHAHAHA");
+        return "PLAYER 1 WINSSSSS";
+      }
+
+      if (this.player2.cards.length === 52) {
+        console.log("PLAYER 2 WINS !!!! PLAYER 1 SUCKS! HAHAHAHAHA");
+        return "PLAYER 2 WINSSSSS";
+      }
       i++;
       console.log("----------- round " + i + " -------------------");
+
+      // if (this.player1.cards.length === ) {
+      //   return "Player Two wins!!!! !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
+      // }
+
+      // if (this.player2.cards.length === 0) {
+      //   return "Player One wins!!!!";
+      // }
       this.player1.draw();
       this.player2.draw();
       console.log(
@@ -49,13 +67,16 @@ class GameOfWar {
       console.log(" P2 WINS");
       this.move_field_cards_to_winner(this.player2, this.player1);
     } else {
-      console.log("evevn");
+      console.log("EVEn ---^^^^^^^^^^^^^^^^^Y%$Y%^$%^$%^^^^^^^^^^^^");
+
       this.gotowar();
     }
   }
 
   move_field_cards_to_winner(winner, loser) {
     console.log("winning card: ", winner.field_cards);
+    console.log("loser cards: ", loser.field_cards);
+
     console.log("moving feild cards to winners cards.");
     for (let i = 0; i < winner.field_cards.length; i++) {
       winner.cards.unshift(winner.field_cards[i]);
@@ -69,8 +90,8 @@ class GameOfWar {
   }
   gotowar() {
     console.log(" LETS GO TO WARRRRRRRR !@$@#$@$%#$%%^@$%^@#$^$%^@$%@#$");
-    this.player1.draw();
-    this.player2.draw();
+    // this.player1.draw();
+    // this.player2.draw();
     this.player1.draw();
     this.player2.draw();
     this.player1.draw();
